@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Delete</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .container {
+            max-width: 500px;
+            margin-top: 100px;
+            text-align: center;
+        }
+        .btn-danger, .btn-secondary {
+            width: 120px;
+            margin: 10px;
+        }
+        h2 {
+            color: #dc3545;
+        }
+        .alert {
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Delete Product</h2>
+        <p class="alert alert-warning">Are you sure you want to delete the product <strong>{{ product.name }}</strong>?</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a href="{% url 'product_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
